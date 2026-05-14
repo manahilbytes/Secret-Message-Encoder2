@@ -1,5 +1,6 @@
 # Final-Lab-Project
-Manahil Fatima (FA25-BSE-060) &lt;br> Mishal Shahid(FA25-BSE-169)
+Manahil Fatima (FA25-BSE-060) 
+Mishal Shahid(FA25-BSE-169)
 This project is a JavaFX application called Secret Message Encoder/Decoder that provides secure text encryption and decryption. It allows users to protect messages using two different modes: Secret Characters (vowel substitution and shifting) and Morse Code.
 
 Key Features:
