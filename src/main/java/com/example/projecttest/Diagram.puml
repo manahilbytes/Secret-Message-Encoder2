@@ -1,0 +1,119 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface DataStorable {
+    +storeResult(result: String): void
+    +getResult(): String
+}
+
+interface EncryptionLogic {
+    +encrypt(input: String): String
+    +decrypt(input: String): String
+}
+
+interface ScreenNavigator {
+    +changeScreen(root: Parent): void
+}
+
+DataStorable <|-- EncryptionLogic
+
+class PasswordManager {
+    -savedPassword: String
+    +setPassword(password: String): void
+    +getPassword(): String
+    +verifyPassword(input: String): boolean
+}
+
+class ProcessingManager implements EncryptionLogic {
+    -lastResult: String
+    +encrypt(input: String): String
+    +decrypt(input: String): String
+    +storeResult(result: String): void
+    +getResult(): String
+}
+
+class Processor2 implements EncryptionLogic {
+    -lastResult: String
+    -originalText: String
+    +encrypt(input: String): String
+    +decrypt(input: String): String
+    +storeResult(result: String): void
+    +getResult(): String
+}
+
+class EncoderApp {
+    -primaryStage: Stage
+    ~manager1: EncryptionLogic
+    ~manager2: EncryptionLogic
+    ~currentProcessor: EncryptionLogic
+    +passwordMgr: PasswordManager
+    +start(stage: Stage): void
+    +showWelcome(): void
+    +showChoice(): void
+    +showEncrypt(): void
+    +showOutput(result: String): void
+    +showDecrypt(): void
+    +showDecryptionScreen(): void
+    +showExit(): void
+    +showCredits(): void
+}
+
+class Launcher {
+    {static} +main(args: String[]): void
+}
+
+' Screen Classes
+class WelcomeScreen {
+    -view: VBox
+    +getView(): Parent
+}
+
+class ChoiceScreen {
+    -view: VBox
+    +getView(): Parent
+}
+
+class EncryptInputScreen {
+    ~view: VBox
+    +getView(): VBox
+}
+
+class OutputScreen {
+    -view: VBox
+    +getView(): VBox
+}
+
+class DecryptInputScreen {
+    +view: VBox
+    +getView(): VBox
+}
+
+class DecryptionScreen {
+    -view: VBox
+    +getView(): VBox
+}
+
+class ExitScreen {
+    -view: VBox
+    +getView(): VBox
+}
+
+class CreditsScreen {
+    -view: VBox
+    +getView(): VBox
+}
+
+' Relationships
+EncoderApp o-- PasswordManager
+EncoderApp o-- EncryptionLogic
+Launcher ..> EncoderApp : launches
+WelcomeScreen ..> EncoderApp
+ChoiceScreen ..> EncoderApp
+EncryptInputScreen ..> EncoderApp
+OutputScreen ..> EncoderApp
+DecryptInputScreen ..> EncoderApp
+DecryptionScreen ..> EncoderApp
+ExitScreen ..> EncoderApp
+CreditsScreen ..> EncoderApp
+
+@enduml
