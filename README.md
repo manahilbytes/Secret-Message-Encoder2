@@ -1,4 +1,4 @@
-2nd Semester Lab-Project
+2nd Semester Lab-Project<br>
 Manahil Fatima  
 Mishal Shahid
 This project is a JavaFX application called Secret Message Encoder/Decoder that provides secure text encryption and decryption. It allows users to protect messages using two different modes: Secret Characters (vowel substitution and shifting) and Morse Code.
